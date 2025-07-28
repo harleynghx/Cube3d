@@ -1,0 +1,26 @@
+# Files
+cub3d
+cub3d_bonus
+
+# Filetypes
+*.o
+
+# Folders
+.vscode
+assets
+lib
+
+# ------dynamic ignoring------
+# # ignore everything
+# *
+
+# #Whitelist
+# !*/
+# !*.c
+# !*.h
+# !.gitignore
+# !Makefile
+
+# #Exceptions
+# .vscode
+# lib
