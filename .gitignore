@@ -8,7 +8,7 @@ cub3d_bonus
 # Folders
 .vscode
 assets
-lib
+# lib
 
 # ------dynamic ignoring------
 # # ignore everything
