@@ -22,7 +22,7 @@ INCLUDES = -I includes -I $(MLX) -I ./lib/Libft
 
 LINKER = -L./lib/Libft -L $(MLX) -L./lib/gnl -lgnl -lft -lm -lmlx $(LINKER_FLAGS)
 
-NAME = cub3d
+NAME = cube3d
 
 NAME_BONUS = cub3d_bonus
 
