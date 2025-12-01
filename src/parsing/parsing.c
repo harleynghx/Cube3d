@@ -1,36 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 17:03:01 by etlim             #+#    #+#             */
-/*   Updated: 2025/12/01 18:34:53 by liyu-her         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
-
-// char	*ft_strdup2(char *src)
-// {
-// 	int		i;
-// 	char	*dest;
-
-// 	dest = (char *)malloc(ft_strlen(src) * sizeof(char) + 1);
-// 	if (!(dest))
-// 	{
-// 		return (NULL);
-// 	}
-// 	i = 0;
-// 	while (src[i] != '\0')
-// 	{
-// 		dest[i] = src[i];
-// 		i++;
-// 	}
-// 	dest[i] = '\0';
-// 	return (dest);
-// }
 
 int	is_empty_str(char *str)
 {
