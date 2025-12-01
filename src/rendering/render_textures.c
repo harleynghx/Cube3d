@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:43:47 by amaligno          #+#    #+#             */
-/*   Updated: 2025/11/27 22:42:04 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 22:34:55 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	get_texture(t_ray ray, t_textures textures, t_image *texture,
 		*color_x = (ray.end.y - floor(ray.end.y));
 		if (ray.angle < 3 * M_PI_2 && ray.angle > M_PI_2)
 		{
-			*texture = textures.east;
+			*texture = textures.west;
 			*color_x = 1.0 - *color_x;
 		}
 		else
-			*texture = textures.west;
+			*texture = textures.east;
 	}
 	*color_x *= texture->line_len / sizeof(int);
 }

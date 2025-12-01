@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:23:22 by amaligno          #+#    #+#             */
-/*   Updated: 2025/11/27 22:17:54 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 22:21:30 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	set_image_struct(void *mlx, t_image *image, char *path)
 void	init_engine(t_data *data, t_paths paths)
 {
 	data->mlx = mlx_init();
-	data->window = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	data->window = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
 	data->image.image = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->image.addr = mlx_get_data_addr(
 			data->image.image,

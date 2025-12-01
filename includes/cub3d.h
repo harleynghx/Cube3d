@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 21:49:48 by liyu-her          #+#    #+#             */
-/*   Updated: 2025/12/01 20:05:19 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 20:59:27 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <stdio.h>
 # include <time.h>
 
+// 4096 x 2304
+// 1920 x 1080
 # define WIN_HEIGHT 1080
 # define WIN_WIDTH 1920
 
