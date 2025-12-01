@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:13:00 by amaligno          #+#    #+#             */
-/*   Updated: 2025/11/26 23:40:52 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 23:20:48 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 int	within_bounds(t_map map, t_player player)
 {
-	return (player.pos.x >= 0 && player.pos.y >= 0
-		&& player.pos.y < map.length
+	return (player.pos.x >= 0 && player.pos.y >= 0 && player.pos.y < map.length
 		&& player.pos.x < ft_strlen(map.str[(int)player.pos.y])
-		&& map.str[(int)player.pos.y][(int)player.pos.x] == '0'
-	);
+		&& map.str[(int)player.pos.y][(int)player.pos.x] == '0');
 }
 
 int	loop(void *param)
 {
-	t_data		*data;
-	t_ray		rays[RAYS];
+	t_data	*data;
+	t_ray	rays[RAYS];
 
 	data = (t_data *)param;
 	move_handler(&data->player);
@@ -52,7 +50,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Not a .cub file\n", STDERR_FILENO);
 		return (1);
 	}
-	data.map.str = parser(argv[1], &paths); //str 2 in a 2d array is in data.map.str
+	data.map.str = parser(argv[1], &paths);
 	init(&data, paths);
 	mlx_loop(data.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:58:30 by pringles          #+#    #+#             */
-/*   Updated: 2025/11/27 22:46:45 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 23:23:32 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,4 @@ void	init_player(t_player *player, t_map *map)
 	player->m_forward = false;
 	player->l_left = false;
 	player->l_right = false;
-	// player->map = true;
 }

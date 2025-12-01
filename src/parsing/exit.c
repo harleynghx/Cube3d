@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 22:11:33 by etlim             #+#    #+#             */
-/*   Updated: 2025/11/12 07:33:11 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 23:21:59 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_error(char *str)
 {
-	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
 	exit(1);
 }
