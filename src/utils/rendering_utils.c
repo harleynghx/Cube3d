@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:08:09 by amaligno          #+#    #+#             */
-/*   Updated: 2024/11/29 19:00:05 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/29 15:10:56 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	img_pix_put(t_image *img, int x, int y, unsigned int color)
 	}
 }
 
-void	draw_rectangle(t_image *img, t_rect rect)
+void	paint_background(t_image *img, t_rect rect)
 {
 	int	y;
 	int	x;
@@ -57,24 +57,3 @@ void	draw_rectangle(t_image *img, t_rect rect)
 		y++;
 	}
 }
-
-void	draw_ray(t_image *img, t_ray ray)
-{
-	unsigned long	len;
-
-	len = 0;
-	while (len < ray.len)
-	{
-		len++;
-		ray.start.x += cos(ray.angle);
-		ray.start.y += sin(ray.angle);
-		if (ray.start.y < 0 || ray.start.y > WIN_HEIGHT
-			|| ray.start.x < 0 || ray.start.x > WIN_WIDTH)
-			break ;
-		img_pix_put(img, round(ray.start.x), round(ray.start.y), ray.color);
-	}
-}
-	// printf("ray.start.x: %lf\n", ray.start.x);
-	// printf("ray.start.y: %lf\n", ray.start.y);
-	// printf("ray.end.x: %lf\n", ray.end.x);
-	// printf("ray.end.y: %lf\n", ray.end.y);

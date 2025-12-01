@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 22:11:33 by etlim             #+#    #+#             */
-/*   Updated: 2024/12/12 19:39:29 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/12 07:33:11 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_error(char *str)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error: ", 2);
 	ft_putstr_fd(str, 2);
 	exit(1);
 }

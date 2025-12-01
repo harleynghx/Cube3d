@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 19:26:24 by amaligno          #+#    #+#             */
-/*   Updated: 2024/12/13 17:39:34 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/28 00:27:24 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,42 +18,13 @@ void	draw_background(t_image *image, t_textures textures)
 
 	background.pos.x = 0;
 	background.pos.y = 0;
-	background.size.y = WIN_HEIGHT / 2;
+	background.size.y = WIN_HEIGHT;
 	background.size.x = WIN_WIDTH;
 	background.color = textures.ceiling;
-	draw_rectangle(image, background);
+	paint_background(image, background);
 	background.pos = (t_vectord){0, WIN_HEIGHT / 2};
 	background.color = textures.floor;
-	draw_rectangle(image, background);
-}
-
-void	draw_player(t_image *image, t_player player, int wall_size)
-{
-	player.pos.x *= wall_size;
-	player.pos.y *= wall_size;
-	draw_rectangle(image, (t_rect){
-		(t_vectord){player.size, player.size},
-		(t_vectord){player.pos.x - player.size / 2,
-		player.pos.y - player.size / 2},
-		create_trgb(0, 255, 223, 18)
-	});
-}
-
-void	draw_rays_2d(t_image *image, t_ray *rays, int map_size)
-{
-	int	i;
-
-	i = 0;
-	while (i < RAYS)
-	{
-		rays[i].end.x *= map_size;
-		rays[i].end.y *= map_size;
-		rays[i].start.x *= map_size;
-		rays[i].start.y *= map_size;
-		rays[i].len *= map_size;
-		draw_ray(image, rays[i]);
-		i++;
-	}
+	paint_background(image, background);
 }
 
 void	draw_rays_3d(t_image *image, t_ray *rays,

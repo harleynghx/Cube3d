@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:46:23 by amaligno          #+#    #+#             */
-/*   Updated: 2025/08/29 00:00:13 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/11/12 14:09:26 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 static void	check_char(char **map, t_vectori pos, t_vectori *start, int *count)
 {
-	if (map[pos.y][pos.x] == '0'
-		&& (!pos.y || !pos.x || !map[pos.y + 1]
-		|| ft_strchr(" ", map[pos.y][pos.x - 1])
-		|| ft_strchr(" ", map[pos.y][pos.x + 1])
-		|| ft_strlen(map[pos.y + 1]) <= (size_t)pos.x
-		|| ft_strlen(map[pos.y - 1]) <= (size_t)pos.x))
+	if (map[pos.y][pos.x] == '0')
 	{
-		exit_error("Map not closed\n");
+		if (!pos.y || !pos.x || !map[pos.y + 1])
+			exit_error("Map is open\n");
+		else if (ft_strchr(" ", map[pos.y][pos.x - 1])
+		|| ft_strchr(" ", map[pos.y][pos.x + 1]))
+			exit_error("Map has empty space\n");
+		else if (ft_strlen(map[pos.y + 1]) <= (size_t)pos.x
+		|| ft_strlen(map[pos.y - 1]) <= (size_t)pos.x)
+			exit_error("Map size is inconsistent\n");
 	}
 	if (ft_strchr("NSWE", map[pos.y][pos.x]))
 	{
@@ -63,16 +65,16 @@ void	check_map(char **map)
 	pos.y = -1;
 	count = 0;
 	fill = 0;
-	start = (t_vectori){-1, -1};
+	start = (t_vectori){-1, -1}; //set player position to -1,-1
 	while (map[++pos.y])
 	{
 		pos.x = -1;
 		while (map[pos.y][++pos.x])
 		{
 			if (ft_strchr("NWSE01", map[pos.y][pos.x]))
-				check_char(map, pos, &start, &count);
-			else if (!ft_strchr("1 ", map[pos.y][pos.x]))
-				exit_error("Invalid char\n");
+				check_char(map, pos, &start, &count); //map enclose and player count validation
+			else if (!ft_strchr("1 ", map[pos.y][pos.x])) //including ' ' will allow for spaces to add after each line
+				exit_error("Invalid char :)\n");
 		}
 	}
 	if (start.x < 0)

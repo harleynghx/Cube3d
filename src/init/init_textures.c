@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:23:22 by amaligno          #+#    #+#             */
-/*   Updated: 2024/12/13 00:15:06 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:17:54 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,17 @@ void	set_image_struct(void *mlx, t_image *image, char *path)
 	set_mlx_image(image);
 }
 
-void	init_textures(t_data *data, t_paths paths)
+void	init_engine(t_data *data, t_paths paths)
 {
+	data->mlx = mlx_init();
+	data->window = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	data->image.image = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
+	data->image.addr = mlx_get_data_addr(
+			data->image.image,
+			&data->image.bpp,
+			&data->image.line_len,
+			&data->image.endian
+			);
 	set_image_struct(data->mlx, &data->textures.north, paths.north);
 	set_image_struct(data->mlx, &data->textures.east, paths.east);
 	set_image_struct(data->mlx, &data->textures.south, paths.south);

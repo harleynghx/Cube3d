@@ -6,7 +6,7 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:13:00 by amaligno          #+#    #+#             */
-/*   Updated: 2025/07/21 15:32:57 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:40:52 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Not a .cub file\n", STDERR_FILENO);
 		return (1);
 	}
-	data.map.str = parser(argv[1], &paths);
+	data.map.str = parser(argv[1], &paths); //str 2 in a 2d array is in data.map.str
 	init(&data, paths);
 	mlx_loop(data.mlx);
 }

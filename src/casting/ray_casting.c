@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:06:50 by amaligno          #+#    #+#             */
-/*   Updated: 2024/12/13 15:29:40 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/27 20:38:03 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ void	cast_rays(t_player player, t_map map, t_ray *rays)
 		player.angle = reset_angle(player.angle);
 		init_ray_h(player, &ray_vh[0], &offset_vh[0]);
 		init_ray_v(player, &ray_vh[1], &offset_vh[1]);
-		cast_ray(&ray_vh[1], map, offset_vh[1]);
 		cast_ray(&ray_vh[0], map, offset_vh[0]);
+		cast_ray(&ray_vh[1], map, offset_vh[1]);
 		rays[i] = longer_ray(ray_vh[1], ray_vh[0], player);
 		i++;
 		player.angle += angle;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:58:30 by pringles          #+#    #+#             */
-/*   Updated: 2024/12/13 17:55:44 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:46:45 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void	init_player(t_player *player, t_map *map)
 	player->size = map->wall_size / 2;
 	player->delta = (t_vectord){cos(player->angle) * PLAYER_SPEED,
 		sin(player->angle) * PLAYER_SPEED};
-	player->m_down = false;
+	player->m_back = false;
 	player->m_left = false;
 	player->m_right = false;
-	player->m_up = false;
+	player->m_forward = false;
 	player->l_left = false;
 	player->l_right = false;
-	player->map = true;
+	// player->map = true;
 }

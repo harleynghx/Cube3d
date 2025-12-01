@@ -19,17 +19,16 @@ $(OBJS_DIR)%.o : %.c
 
 $(NAME): $(OBJS_PREF)
 	@ar rc $(NAME) $(OBJS_PREF)
-	@echo "Libft Done !"
+	@echo "$(NAME) Complied!"
 
 all: $(NAME)
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo Libft clean !
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo Libft fclean !
+	@echo Libft fclean!
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:55:11 by amaligno          #+#    #+#             */
-/*   Updated: 2024/12/13 19:09:58 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:19:08 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_hooks(t_data *data)
 
 void	init_map(t_map *map)
 {
-	int		m_size;
 	int		y;
 	int		x;
 
@@ -30,6 +29,7 @@ void	init_map(t_map *map)
 	x = 0;
 	map->width = 0;
 	map->length = 0;
+	map->wall_size = 1;
 	while (map->str[y])
 	{
 		x = 0;
@@ -41,28 +41,12 @@ void	init_map(t_map *map)
 		if (y > map->length)
 			map->length = y;
 	}
-	m_size = (MMAP_RATIO * 0.01) * WIN_WIDTH;
-	map->wall_size = m_size / map->width;
-}
-
-void	init_mlx(t_data *data)
-{
-	data->mlx = mlx_init();
-	data->window = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-	data->image.image = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	data->image.addr = mlx_get_data_addr(
-			data->image.image,
-			&data->image.bpp,
-			&data->image.line_len,
-			&data->image.endian
-			);
 }
 
 void	init(t_data *data, t_paths paths)
 {
 	init_map(&data->map);
-	init_mlx(data);
-	init_textures(data, paths);
+	init_engine(data, paths);
 	init_hooks(data);
 	init_player(&data->player, &data->map);
 }

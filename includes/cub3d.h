@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 13:28:52 by amaligno          #+#    #+#             */
-/*   Updated: 2024/12/13 18:08:35 by amaligno         ###   ########.fr       */
+/*   Created: 2025/11/27 21:49:48 by liyu-her          #+#    #+#             */
+/*   Updated: 2025/12/01 20:05:19 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,16 @@
 # include <math.h>
 # include <stdio.h>
 # include <time.h>
-# include <fcntl.h>
 
-// 4096 x 2304
-// 1920 x 1080
 # define WIN_HEIGHT 1080
 # define WIN_WIDTH 1920
-# define WALL_SIZE 32
-# define MMAP_RATIO 25
-// # define MMAP_SIZE (MMAP_RATIO * 0.01) * WIN_WIDTH
 
-# define PLAYER_HITBOX 0.6
-# define PLAYER_LOOK 0.1
+# define PLAYER_LOOK 0.05
 # define PLAYER_SPEED 0.1
 # define PLAYER_SIZE 9
 # define DEGREE_IN_RADIANS 0.0174533
 
-# define DOF 20
+# define DOF 500
 # define FOV 60
 # define RAYS 1920
 
@@ -54,10 +47,8 @@ enum
 	KEY_A = 0,
 	KEY_S = 1,
 	KEY_D = 2,
-	KEY_E = 14,
-	KEY_M = 46,
 	KEY_LEFT = 123,
-	KEY_RIGHT = 124
+	KEY_RIGHT = 124,
 };
 # elif __linux__
 
@@ -70,8 +61,6 @@ enum
 	KEY_A = XK_a,
 	KEY_S = XK_s,
 	KEY_D = XK_d,
-	KEY_E = XK_e,
-	KEY_M = XK_m,
 	KEY_LEFT = XK_Left,
 	KEY_RIGHT = XK_Right,
 };
@@ -97,13 +86,13 @@ typedef struct s_parsing
 	char	*tmp;
 }	t_parsing;
 
-typedef struct s_vectori
+typedef struct s_vectori //vector int for map
 {
 	int	x;
 	int	y;
 }	t_vectori;
 
-typedef struct s_vector
+typedef struct s_vectord //vector double for precision 
 {
 	double	x;
 	double	y;
@@ -153,8 +142,8 @@ typedef struct s_player
 	double		angle;
 	bool		m_left;
 	bool		m_right;
-	bool		m_up;
-	bool		m_down;
+	bool		m_forward;
+	bool		m_back;
 	bool		l_left;
 	bool		l_right;
 	bool		map;
@@ -200,7 +189,7 @@ void	cast_rays(t_player player, t_map map, t_ray *rays);
 //Init
 void	init(t_data *data, t_paths paths);
 void	init_player(t_player *player, t_map *map);
-void	init_textures(t_data *data, t_paths paths);
+void	init_engine(t_data *data, t_paths paths);
 
 //Main-----------------------------------------------------
 
@@ -214,20 +203,15 @@ int		check_texture_rgb2(t_parsing *parse, t_paths *nsewfc);
 void	get_rgb(char *line, int *r, int *g, int *b);
 char	*ft_strdup2(char *src);
 char	**parser(char *map, t_paths *nsewfc);
-void	check_textures(int fd);
 void	check_map(char **map);
 void	exit_error(char *str);
-void	*ft_realloc(char **str, size_t old_size, size_t new_size);
 
 //Player
 void	move_handler(t_player *player);
 void	look_handler(t_player *player);
-int		check_move(t_player *player, t_map map);
 
 //Rendering
-void	draw_player(t_image *image, t_player player, int wall_size);
 void	draw_background(t_image *image, t_textures textures);
-void	draw_rays_2d(t_image *image, t_ray *rays, int map_size);
 void	draw_rays_3d(t_image *image, t_ray *rays,
 			t_player player, t_textures textures);
 
@@ -248,14 +232,10 @@ char	*get_next_line(int fd);
 //Rendering Utils
 int		create_trgb(int t, int r, int g, int b);
 void	img_pix_put(t_image *img, int x, int y, unsigned int color);
-void	draw_rectangle(t_image *img, t_rect rect);
-void	draw_ray(t_image *img, t_ray ray);
+void	paint_background(t_image *img, t_rect rect);
 
 //Angle Utils
 double	reset_angle(double angle);
-double	deg_to_rad(double degrees);
-
-//Ray Utils
 double	calc_hyp(t_vectord side1, t_vectord side2);
 
 #endif

@@ -25,7 +25,6 @@ all: $(NAME)
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo $(NAME) clean !
 
 fclean: clean
 	@rm -f $(NAME)

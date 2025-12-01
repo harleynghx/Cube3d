@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:29:05 by amaligno          #+#    #+#             */
-/*   Updated: 2024/12/10 15:44:21 by amaligno         ###   ########.fr       */
+/*   Updated: 2025/11/27 00:09:40 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ void	move_handler(t_player *player)
 {
 	int	sign;
 
-	sign = 1;
-	if (player->m_up ^ player->m_down)
+	if (player->m_forward ^ player->m_back)
 	{
-		if (player->m_down)
+		sign = 1;
+		if (player->m_back)
 			sign = -1;
 		player->pos.y += player->delta.y * sign;
 		player->pos.x += player->delta.x * sign;
 	}
 	if (player->m_left ^ player->m_right)
 	{
+		sign = 1;
 		if (player->m_left)
 			sign = -1;
 		player->pos.y += player->delta.x * sign;

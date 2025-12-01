@@ -6,31 +6,31 @@
 /*   By: liyu-her <liyu-her@student.42.kl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 17:03:01 by etlim             #+#    #+#             */
-/*   Updated: 2025/07/21 20:24:10 by liyu-her         ###   ########.fr       */
+/*   Updated: 2025/12/01 18:34:53 by liyu-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*ft_strdup2(char *src)
-{
-	int		i;
-	char	*dest;
+// char	*ft_strdup2(char *src)
+// {
+// 	int		i;
+// 	char	*dest;
 
-	dest = (char *)malloc(ft_strlen(src) * sizeof(char) + 1);
-	if (!(dest))
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
+// 	dest = (char *)malloc(ft_strlen(src) * sizeof(char) + 1);
+// 	if (!(dest))
+// 	{
+// 		return (NULL);
+// 	}
+// 	i = 0;
+// 	while (src[i] != '\0')
+// 	{
+// 		dest[i] = src[i];
+// 		i++;
+// 	}
+// 	dest[i] = '\0';
+// 	return (dest);
+// }
 
 int	is_empty_str(char *str)
 {
@@ -41,7 +41,7 @@ int	is_empty_str(char *str)
 	return (1);
 }
 
-char	*str_check(int fd, t_paths *nsewfc)
+char	*str_check(int fd, t_paths *pths)
 {
 	t_parsing	parse;
 
@@ -52,22 +52,22 @@ char	*str_check(int fd, t_paths *nsewfc)
 	while (parse.line != NULL && parse.count < 6)
 	{
 		if (!is_empty_str(parse.line))
-			parse.count = check_texture_rgb(&parse, nsewfc);
+			parse.count = check_texture_rgb(&parse, pths);
 		free(parse.line);
 		parse.line = get_next_line(fd);
 	}
 	if (parse.count != 6)
-		exit_error("Missing texture or RGB config!");
+		exit_error("Missing texture or RGB config!\n");
 	return (parse.line);
 }
 
 char	*str_alloc(int fd, char *line)
 {
 	char	*str;
-	char	*str2;
+	char	*temp;
 
 	str = NULL;
-	str2 = NULL;
+	temp = NULL;
 	while (line[0] == '\n')
 	{
 		free(line);
@@ -80,17 +80,17 @@ char	*str_alloc(int fd, char *line)
 	{
 		if (is_empty_str(line))
 			exit_error("Map contains empty line\n");
-		str2 = str;
+		temp = str;
 		str = ft_strjoin(str, line);
 		free(line);
-		free(str2);
+		free(temp);
 		line = get_next_line(fd);
 	}
 	close(fd);
 	return (str);
 }
 
-char	**parser(char *map, t_paths *nsewfc)
+char	**parser(char *map, t_paths *pths)
 {
 	char	*str;
 	char	**str2;
@@ -101,7 +101,7 @@ char	**parser(char *map, t_paths *nsewfc)
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		exit_error("Couldn't open map!\n");
-	str = str_alloc(fd, str_check(fd, nsewfc));
+	str = str_alloc(fd, str_check(fd, pths));
 	str2 = ft_split(str, '\n');
 	check_map(str2);
 	while (str2[i])

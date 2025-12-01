@@ -1,6 +1,7 @@
 # Files
 cub3d
-cub3d_bonus
+test.c
+demo
 
 # Filetypes
 *.o
